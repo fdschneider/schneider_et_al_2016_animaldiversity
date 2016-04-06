@@ -14,7 +14,7 @@ This repository contains simulation code and code for statistical analysis of a 
 
 ## Comments welcome
 
-We encourage testing or reviewing this simulation code. Any comments, bug reports or mistakes should be reported in the [Github issues](https://github.com/fdschneider/2016_schneider_et_al/issues).
+We encourage testing or reviewing this simulation code. Any comments, bug reports or mistakes should be reported in the [Github issues](https://github.com/fdschneider/schneider_et_al_2016_animaldiversity/issues).
 
 ## License
 

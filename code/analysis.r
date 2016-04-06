@@ -6,7 +6,7 @@
 #                        Version 2.0.0
 #   last edit: 06.04.2016 by Christian Guill & Florian D. Schneider
 #
-# Website: https://github.com/fdschneider/2016_animaldiversity/issues
+# Website: https://github.com/fdschneider/schneider_et_al_2016_animaldiversity
 #
 # Contact the authors: [Christian Guill](C.P.Guill@uva.nl), 
 #                      [Florian D. Schneider](florian.schneider@univ-montp2.fr)
