@@ -1,6 +1,0 @@
----
-title: "Analysis"
-author: "Florian D. Schneider"
-date: "Tuesday, September 30, 2014"
-output: pdf_document
----
