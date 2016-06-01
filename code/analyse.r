@@ -59,12 +59,12 @@ analyse <- function(x,y,
   if(ylim == "data") ylim <- 10^(log10(iq99) + c(log10(iq99[2])-log10(iq99[1]) )*c(-.2,0.2))
   
   if(plotting) {
-    plot(x,y, log = "y", col = "#00000010",
+    plot(x,y, log = "y", col = "#00000015",
          pch = 20, cex = 0.6, xaxt = "n", yaxt = "n", bty = "n", 
          xlab = xlab, ylab = ylab, ylim = ylim, xlim = xlim , ...) # plot Y and X values of all food webs
     
   } else {
-    plot(NA,NA, log = "y", col = "#00000010", 
+    plot(NA,NA, log = "y", col = "#00000015", 
          pch = 20, cex = 0.6, xaxt = "n", yaxt = "n", bty = "n", 
          xlab = xlab, ylab = ylab, ylim = ylim, xlim = xlim , ...) # plot Y and X values of all food webs
     

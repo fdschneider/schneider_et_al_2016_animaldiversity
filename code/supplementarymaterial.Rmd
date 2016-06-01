@@ -1,10 +1,10 @@
 ---
 title: "Supplementary material: Animal diversity and ecosystem functioning in dynamic food webs"
 author:
-- name: Florian D. Schneider \footnotemark[1] \footnotemark[2] \footnotemark[4] \footnotemark[5]
-- name: Ulrich Brose \footnotemark[2] \footnotemark[3]
-- name: Björn C. Rall \footnotemark[2] \footnotemark[3]
-- name: Christian Guill \footnotemark[2] \footnotemark[6] \footnotemark[7]
+- name: Florian D. Schneider \footnotemark[1] \footnotemark[2] \footnotemark[3] 
+- name: Ulrich Brose \footnotemark[4] \footnotemark[5]
+- name: Björn C. Rall \footnotemark[4] \footnotemark[5]
+- name: Christian Guill \footnotemark[6] \footnotemark[7]
 output:
   pdf_document:
     fig_caption: yes
@@ -28,13 +28,15 @@ bibliography: biblio.bib
 
 
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}   
-\footnotetext[1]{Corresponding author: florian.schneider@univ-montp2.fr }
-\footnotetext[2]{Systemic Conservation Biology, J.F. Blumenbach Institute of Zoology \& Anthropology, University of Göttingen, Berliner Str. 28, 37073 Göttingen, Germany}
-\footnotetext[3]{German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig, Deutscher Platz 5e, 04103 Leipzig, Germany}
-\footnotetext[4]{Institut des Sciences de l'Evolution, Université Montpellier, CNRS, IRD, UMR 5554, C.C.065,  34095 Montpellier Cedex 05, France}
-\footnotetext[5]{Senckenberg Biodiversity and Climate Research Centre (BiK-F), Senckenberganlage 25, 60325 Frankfurt am Main, Germany}
-\footnotetext[6]{Institute of Biochemistry and Biology, University of Potsdam, Potsdam, Germany}
-\footnotetext[7]{Institute for Biodiversity and Ecosystem Dynamics, University of Amsterdam, P.O. Box 94248, 1090 GE Amsterdam, The Netherlands \newline \newline The authors declare that they contributed to the present work as follows: FDS, UB, BCR, and CG designed the simulation experiment; CG and FDS developed the simulation code; FDS, UB, BCR, and CG wrote the paper.}
+
+\footnotetext[1]{Corresponding author: fd.schneider@senckenberg.de }
+\footnotetext[2]{Institut des Sciences de l'Evolution, Université Montpellier, CNRS, IRD, UMR 5554, C.C.065,  34095 Montpellier Cedex 05, France}
+\footnotetext[3]{Senckenberg Biodiversity and Climate Research Centre (BiK-F), Senckenberganlage 25, 60325 Frankfurt am Main, Germany}
+\footnotetext[4]{German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig, Deutscher Platz 5e, 04103 Leipzig, Germany}
+\footnotetext[5]{Institute of Ecology, Friedrich Schiller Universtiy Jena, Dornburger-Str. 159, 07743 Jena, Germany}
+\footnotetext[6]{Institute for Biodiversity and Ecosystem Dynamics, University of Amsterdam, P.O. Box 94248, 1090 GE Amsterdam, The Netherlands}
+\footnotetext[7]{Institute of Biochemistry and Biology, University of Potsdam, Potsdam, Germany}
+
 
 
 \newpage
@@ -57,33 +59,6 @@ source("../code/analyse.r")
   x <- seq(1,95,length = 100)
 
 ```
-
-
-
-```{r, echo = FALSE, fig.width = 3, fig.height = 6, dev = 'png', dpi = 300, fig.cap='average body size of animals and plants.', fig.pos = "!h", out.width = "2in", warning=FALSE}
-
-
-par(mfcol = c(2,1))
-par( mar = c(3,4,0.5,1)+.1, oma = c(1,0,1,0), las = 1, lend = 1)
-
-analyse(webstats$S_c_fin, webstats$Mav_c, ylab = "Animal body mass", modeltype = "log", plotting = TRUE, ylim = quantile(webstats$Mav_c, c(0.02,0.975)) )
-
-axis(2, at = 10^c(2,3,4),labels = c(expression(10^{2}),expression(10^{3}),expression(10^4)),  tck = longtick, las = 1)
-axis(2, at = c(seq(10^2,10^3, length = 10), seq(10^3,10^4, length = 10) ), tck =shorttick, labels = NA)
-
-
-analyse(webstats$S_c_fin, webstats$Mav_b, ylab = "Plant body mass", modeltype = "log", ylim = quantile(webstats$Mav_b, c(0.025,0.975)))
-axis(1, at = c(0,50,100), tck = longtick)
-axis(1, at = seq(0,100, 10), tck = shorttick, labels = NA)
-
-axis(2, at = 10^c(0,1,2),labels = c(expression(10^{0}),expression(10^{1}),expression(10^2)),  tck = longtick, las = 1)
-axis(2, at = rep(seq(1,10, length = 10), times = 2)*rep(10^(0:1), each = 10), 
-     tck =shorttick, labels = NA)
-
-
-```
-
-
 
 
 # Sensitivity analysis
@@ -246,7 +221,7 @@ This series of complementary analyses tests if the conclusions we draw in the pa
 
 ## Stochastic parameters 
 
-In the article, we argue for the parameters we applied for allometric constants or optimal body mass scaling based on empirical evidence but included stochastic noise to cover uncertainties about the precise values. Here, we analyse how changes in those parameter values affect the resulting relationship between species richness and the ecosystem process, $y$, by fitting linear models that contain the parameter in question, $x$, as well as it's interaction term with $S_A$.
+In the article, we argue for the parameters we applied for allometric constants or optimal body mass scaling based on empirical evidence but included stochastic noise to cover uncertainties about the precise values. We sampled all exponents from normal distributions within the inclusive exclusive limits of $\pm3\sigma$. Here, we analyse how changes in those parameter values affect the resulting relationship between species richness and the ecosystem process, $y$, by fitting linear models that contain the parameter in question, $x$, as well as it's interaction term with $S_A$.
 
 (@lm) $$ \log{y} = \log(a) + \alpha \log(S_A) + \beta X + \gamma X \log(S_a) $$ 
 
@@ -254,29 +229,26 @@ We illustrate the relative importance of those parameters by reproducing figure 
 
 ### Hill-exponent
 
-The Hill-exponent of the functional response varies around 1.5 with a standard deviation of 0.2. This is based on the frequent observation of weak type-III functional responses in natural systems [@rall12; @englund11]. For reasons of simplicity, we assume a unified type of functional response in each habitat. This reflects the reduction of capture coefficients at very low resource densities depends on the habitat heterogeneity.   
-In natural ecosystems, the shape of the sigmoidal functional response will differ among taxa, but might vary systematically with body size ratio [@kalinkat13]. 
+The Hill-exponent of the functional response varies around 0.5 with a standard deviation of 0.2. This is based on the frequent observation of moderate type-III functional responses in natural systems [@rall12; @englund11]. For reasons of simplicity, we assume a unified type of functional response in each habitat. This reflects the reduction of capture coefficients at very low resource densities depends on the habitat heterogeneity.   
+In natural ecosystems, the shape of the sigmoidal functional response will differ among taxa, but is systematically bound to body size ratio [@kalinkat13].
 
-The value of the Hill-exponent did not alter the relationship between functional diversity and ecosystem functions qualitatively (Fig. S2). 
-A strong sigmoidal shape of functional response (i.e. high Hill-exponents) reduced average animal biomass. This reduction in animal biomass propagated to plant biomass accopanied by an increase in plant respiration (Fig. S2). 
+The value of the Hill-exponent did not alter the relationship between functional diversity and ecosystem functions qualitatively (Fig. S1). 
+A strong sigmoidal shape of functional response (i.e. high Hill-exponents) reduced average animal biomass. This reduction in animal biomass propagated to plant biomass accopanied by an increase in plant respiration (Fig. S1). 
 
 ```{r, echo = FALSE, dev = 'png', dpi = 300, fig.cap='effect of Hill-exponent on relationship between FD and ecosystem functions. Solid line is overall model; dashed lines are covering 99% of variation in Hill-exponent. '}
 
-sensitivity(webstats$hill,  quantile(webstats$hill, c(0.005,0.995)))
+sensitivity(webstats$hill-1,  quantile(webstats$hill, c(0.005,0.995)))
 
 ```
 
 
 ### Capture coefficient
 
-The allometric feeding rate model includes a definition of the capture coefficient, $b_\mathit{ij}$ that scales the feeding efficiency $\mathcal{L}_{i\,,j}$ with the body mass of consumer, $m_i$, and the body mass of the resource, $m_j$, following power-law relationships. <!--: 
+The allometric feeding rate model includes a definition of the capture coefficient, $b_\mathit{ij}$ that scales the feeding efficiency $\mathcal{L}_{i\,,j}$ with the body mass of consumer, $m_i$, and the body mass of the resource, $m_j$, following power-law relationships. 
+For each food web, the exponent of consumer body mass was drawn from a normal distribution with mean $\mu_{\beta_i}=0.47$, and standard deviation $\sigma_{\beta_i}=0.04$. The exponent of resource body mass was drawn from a normal distribution with $\mu_{\beta_j}=0.15$ and $\sigma_{\beta_j}=0.03$. These means were estimated from empirically observed values [@rall12]. For plant resources, the capture coefficient did not scale with resource body mass and the scaling with resource body mass was subsituted by a constant of value 20. 
 
-(@capture) $$ b_\mathit{ij}=b_0 m_i^{\beta_i} m_j^{\beta_j} \mathcal{L}_{i\,,j}\,. $$
---> 
-For each food web, the exponent of consumer body mass was drawn from a normal distribution with $\mu = ?$, $\sigma = ?$. The exponent of resource body mass was drawn from a normal distribution with $\mu = ?$, $\sigma = ?$. Those means were estimated from empirically observed values [@rall12]. For plant resources, the capture coefficient did not scale with resource body mass and was set to $\beta_j = 0$. 
-
-The exponent of consumer body mass had a prominent, turning the effect of animal species richness on total plant biomass positive at low values and negative at high values (Fig. S3). Other ecosystem functions responded only weakly to changes in the exponent of consumer body mass. 
-The influence of the exponent of resource body mass was weak (Fig. S4) and did not alter the relationship  between functional diversity and ecosystem functioning qualitatively. 
+The exponent of consumer body mass was influental in altering the effect of animal species richness on total plant biomass from positive at low values and negative at high values (Fig. S2). Other ecosystem functions responded only weakly to changes in the exponent of consumer body mass. 
+The influence of the exponent of resource body mass was weak (Fig. S3) and did not alter the relationship  between functional diversity and ecosystem functioning qualitatively. 
 
 ```{r, echo = FALSE, dev = 'png', dpi = 300, fig.cap='effect of exponent of consumer body mass, $\\beta_i$, in attack rate on relationship between FD and ecosystem functions. Solid line is overall model; dashed lines are covering 99% of variation in $\\beta_i$.'}
 
@@ -292,7 +264,7 @@ sensitivity(webstats$a_p, quantile(webstats$a_p, c(0.005,0.995)))
 
 ### Consumer interference
 
-We assumed that consumers of the same species engaged in non-fatal interactions that reduced their time dedicated to foraging as their own density increased. The value of predator interference was drawn from a normal distribution with $\mu = ?$ and $\sigma = ?$.  The effect of predator interference was negligible and did not alter the relationship between functional diversity and ecosystem functioning (Fig. S5). 
+We assumed that consumers of the same species engaged in non-fatal interactions that reduced their time dedicated to foraging as their own density increased. The value of predator interference was drawn from a normal distribution with $\mu_c = 0.8$ and $\sigma_c = 0.2$. The effect of predator interference was negligible and did not alter the relationship between functional diversity and ecosystem functioning (Fig. S4). 
 
 ```{r, echo = FALSE, dev = 'png', dpi = 300, fig.cap='effect of predator interference, $c$, on relationship between FD and ecosystem functions. Solid line is overall model; dashed lines include 99% of variation in $c$.'}
 
@@ -303,11 +275,8 @@ sensitivity(webstats$pred_int, quantile(webstats$pred_int, c(0.005,0.995)) )
 
 ### Handling time
 
-The time a consumer spends on handling one prey item is a power-law of both consumer body mass, $m_i$, and resource body mass, $m_j$.
-<!--
-(@handling) $$h_i=h_0 m_i^{\eta_i} m_j^{\eta_j}\,,$$
--->
-Neither of the two exponents alters the relationship between functional diversity and ecosystem functioning (Fig. S6 & S7).  
+The time a consumer spends on handling one prey item is a power-law of both consumer body mass, $m_i$, and resource body mass, $m_j$ with exponents $\eta_i$ and $\eta_j$, respectively, drawn from normal distributions ($\mu_{\eta_i} = -0.48$, $\sigma_{\eta_i} =0.03$; $\mu_{\eta_j} = -0.66$, $\sigma_{\eta_j} =0.02$).
+Neither of the two exponents alters the relationship between functional diversity and ecosystem functioning (Fig. S5 & S6).  
 
 ```{r, echo = FALSE, dev = 'png', dpi = 300,  fig.cap='effect of exponent of consumer body mass, $\\eta_i$, in handling time on relationship between FD and ecosystem functions. Solid line is overall model; dashed lines are covering 99% of variation in $\\eta_i$.'}
 
@@ -325,7 +294,7 @@ sensitivity(webstats$h_p, quantile(webstats$h_p, c(0.005,0.995)))
 
 ## Structural parameters
 
-Other parameters of the model were of structural character, such as the number of basal plant species or the type and amount of nutrient supply. To show how changes in those parameters alter the relationship of biodiversity and ecosystem function we performed additional simulations. For each alternative parameter value, we ran 400 simulations along the gradient of 10 to 100 animal species and fitted independent linear models for each simulation on log-log transformed data. 
+Other parameters of the model were of structural character, such as the number of basal plant species or the type and amount of nutrient supply. To show how changes in those parameters alter the relationship of biodiversity and ecosystem function we performed additional simulations. For each alternative parameter value, we ran 60 replicates of each step along the gradient of 10 to 100 animal species and fitted independent linear models for each simulation on log-log transformed data. 
 
 ```{r, echo = FALSE}
 
@@ -374,8 +343,8 @@ sensitivity_plus <- function(data, label, cols, modeltype = "log") {
 
   lapply(1:length(data), function(i)  sensitivity_add("meanB_c", data[[i]], label[i], cols[i]))
 
-    axis(2, at = 10^c(-1,0,1), labels = c(0.1, 1, 10), tck = longtick, las = 1)
-  axis(2, at = (rep(10^seq(-1, 0, 1), each = 10) * seq(1,10, 1)), labels = NA, tck = shorttick)
+     axis(2, at = 10^c(0,1,2), labels = c( 1, 10,100), tck = longtick, las = 1)
+  axis(2, at = (rep(10^seq(0, 1, 1), each = 10) * seq(1,10, 1)), labels = NA, tck = shorttick)
    mtext("animal biomass", las = 0, padj = -3,side = 2)
  
   # b) Basal biomass
@@ -387,8 +356,8 @@ sensitivity_plus <- function(data, label, cols, modeltype = "log") {
   axis(1, at = c(0,50,100), tck = longtick)
   axis(1, at = (seq(0,100, 10)), tck = shorttick, labels = NA)
   
- axis(2, at = 10^(-1:1), labels = c(0.1, 1, 10), tck = longtick, las = 1)
-  axis(2, at = (rep(10^seq(-1, 0, 1), each = 10) * seq(1,10, 1)), labels = NA, tck = shorttick)
+ axis(2, at = 10^(1:2), labels = c( 10,100), tck = longtick, las = 1)
+  axis(2, at = (rep(10^seq(1, 1, 1), each = 10) * seq(1,10, 1)), labels = NA, tck = shorttick)
   mtext("plant biomass", las = 0, padj = -3, side = 2)
 
   
@@ -455,7 +424,7 @@ mtext("Functional Diversity", side = 1, outer = TRUE)
 
 In the default model, we varied the diversity within the animal community whereas the basal trophic level of plants was initialized with a standardized species richness of 30. This methodology was chosen to ensure that differences in plant productivity such as changes in the total carrying capacity of all basal species cannot confound our results. Allowing extinctions during the population dynamics might further reduce this number in some of the food webs. In the model, the animal species number varied from 10 to 100, which causes very different ratios between the number of animal and plant species. 
 The number of plant species might have an impact on the number of animal species that the ecosystem can support and the distribution of the functional diversity along the body mass axis. 
-Thus, in this analysis we simulated food webs with 10 and 50 plant species to visualise the effect of the initial number of plant species for the relationship between animal diversity and ecosystem functioning. Increased plant species richness did not alter the patterns qualitatively, but reduced the level of plant biomass while increasing plant respiration rates. Strong effects were visible for low plant species richness which led to reduced plant respiration at high animal diversity and a negative relationship of animal diversity and plant biomass (Fig. S8).
+Thus, in this analysis we simulated food webs with 10 and 50 plant species to visualise the effect of the initial number of plant species for the relationship between animal diversity and ecosystem functioning. Increased plant species richness did not alter the patterns qualitatively, but reduced the level of plant biomass while increasing plant respiration rates. Strong effects were visible for low plant species richness which led to reduced plant respiration at high animal diversity and a negative relationship of animal diversity and plant biomass (Fig. S7).
 We caution, however, that the model dynamics would also affect the selective survival of animal species in communities with few plants spaced out along the body mass axis. Thus, the animal community is less likely to comprise multiple trophic levels. This illustrates how the reduction of plant diversity propagates up the food chain.
 
 ```{r, eval = TRUE, echo = FALSE, dev = 'png', dpi = 300, fig.cap='effect of number of initial plant species, $S_P$, on relationship between FD and ecosystem functions. Red line is the default model with $S_P = 30$; Yellow and blue lines show alternative simulations with low ($S_P = 10$) and high ($S_P = 50$) initial plant species richness, respectively.'}
@@ -476,7 +445,7 @@ sensitivity_plus(list(webstats_Sb10, webstats_Sb50), label = c(10,50), cols = c(
 
 The foodwebs constructed by our model assume that most animals are omnivorous feeders that include both plants and animals in their resource spectrum. In nature, many strict herbivores are forming the level of primary consumers, whithout supplementary energy uptake via other pathways. To test how this simplification affects the results of our study, we simulated foodwebs with 50% strict herbivores among the primary consumers, thus strengthening the direct flow of energy into the animal compartment. 
 
-This did reduce plant biomass at high levels of animal species richness, as well as the losses due to plant respiration (Fig. S9). The top-down supression seems to work better in this case. 
+This did reduce plant biomass at high levels of animal species richness, as well as the losses due to plant respiration (Fig. S8). The top-down supression seems to work better in this case. 
 
 
 ```{r,eval = TRUE,  echo = FALSE, dev = 'png', dpi = 300,  fig.cap='effect of pronounced trophic structure by having strict herbivores in the community. Red line is the default model with all animals being omnivores; Blue line show an alternative simulation with 50% of animals strictly limited to herbivorous consumption.'}
@@ -493,7 +462,7 @@ sensitivity_plus(data = list(webstats_H50), label=  c(50), cols = c("#0060FF") )
 ### Nutrient supply
 
 To see how bottom-up supply alter the relationship between functional diversity and ecosystem function, we ran the simulation with higher and lower rates of nutrient turnover. 
-This changed the absolute values of biomass stocks and consumption and respiration rates, but did not alter the relative change of those values along the gradient of functional diversity (Fig. S 10).
+This changed the absolute values of biomass stocks and consumption and respiration rates, but did not alter the relative change of those values along the gradient of functional diversity (Fig. S9).
 
 ```{r, eval = TRUE, echo = FALSE, dev = 'png', dpi = 300, fig.cap="effect of nutrient supply on relationship between FD and ecosystem functions. Red line is the default model with turnover rate $D = 0.25$; Yellow and blue lines show additional simulations with low ($D = 0.1$) and high ($D = 0.5$) turnover rates, respectively."}
 
@@ -510,3 +479,4 @@ sensitivity_plus(list(webstats_D01, webstats_D05), label = c(0.1,0.5), cols = c(
 
 
 # References
+\footnotesize
