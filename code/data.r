@@ -28,7 +28,7 @@
 ##################################
 
 # list of filenames
-items <- paste("data/pdef_2.4/pdef_2.4_", c(paste("0", as.character(1:5), sep ="") ), sep ="")
+items <- paste("data/pdef_2.4/pdef_2.4_", c(paste0("0", as.character(1:9)), as.character(10:15)), sep ="")
 
 # loop: open files and append to object webstats
 webstats <- read.table(items[1], skip =1, header = T, sep = "")
@@ -83,12 +83,13 @@ write.table(webstats, "data/webstats.txt", sep = ",")
 
 items <- c(
   "data/pdef_2.4/pdef_2.4_H50_01",
-  "data/pdef_2.4/pdef_2.4_H50_02"
+  "data/pdef_2.4/pdef_2.4_H50_02",
+  "data/pdef_2.4/pdef_2.4_H50_03"
 )
 
 # loop: open files and append to object webstats
 webstats_H50 <- read.table(items[1], skip =1, header = T, sep = "")
-#for(i in 2:length(items)) webstats_H50 <- rbind(webstats_H50, read.table(items[i], skip =1, header = T, sep = ""))
+for(i in 2:length(items)) webstats_H50 <- rbind(webstats_H50, read.table(items[i], skip =1, header = T, sep = ""))
 webstats_H50$S_c_fin <- round(webstats_H50$S_c*webstats_H50$P_c, digits = 0)  # final number of consumers, creates NaNs !!!!
 webstats_H50 <- subset(webstats_H50, fintop_b == 0  & meanB_b > 0)
 
@@ -108,11 +109,17 @@ write.table(webstats_H50, "data/webstats_H50.txt", sep = ",")
 
 items <- c(
   "data/pdef_2.4/pdef_2.4_Sb10_01",
-  "data/pdef_2.4/pdef_2.4_Sb50_01"
+  "data/pdef_2.4/pdef_2.4_Sb10_03",
+  "data/pdef_2.4/pdef_2.4_Sb10_02",
+  "data/pdef_2.4/pdef_2.4_Sb50_01",
+  "data/pdef_2.4/pdef_2.4_Sb50_02",
+  "data/pdef_2.4/pdef_2.4_Sb50_02"
 )
 
 # loop: open files and append to object webstats
 webstats_Sb10 <- read.table(items[1], skip =1, header = T, sep = "")
+for(i in 2:3) webstats_Sb10 <- rbind(webstats_Sb10, read.table(items[i], skip =1, header = T, sep = ""))
+
 webstats_Sb10$S_c_fin <- round(webstats_Sb10$S_c*webstats_Sb10$P_c, digits = 0)  # final number of consumers, creates NaNs !!!!
 webstats_Sb10$S_c_fin[webstats_Sb10$S_c_fin == "NaN"] <- 0                     # sets NaN = 0
 webstats_Sb10 <- subset(webstats_Sb10, fintop_b == 0 & S_c_fin != 0 & meanB_b > 0)
@@ -127,7 +134,8 @@ webstats_Sb10$meanB_c <- webstats_Sb10$meanB_c*webstats_Sb10$S_c_fin
 
 write.table(webstats_Sb10, "data/webstats_Sb10.txt", sep = ",")
 
-webstats_Sb50 <- read.table(items[2], skip =1, header = T, sep = "")
+webstats_Sb50 <- read.table(items[4], skip =1, header = T, sep = "")
+for(i in 5:6) webstats_Sb50 <- rbind(webstats_Sb50, read.table(items[i], skip =1, header = T, sep = ""))
 webstats_Sb50$S_c_fin <- round(webstats_Sb50$S_c*webstats_Sb50$P_c, digits = 0)  # final number of consumers, creates NaNs !!!!
 webstats_Sb50$S_c_fin[webstats_Sb50$S_c_fin == "NaN"] <- 0
 webstats_Sb50 <- subset(webstats_Sb50, fintop_b == 0 & S_c_fin != 0 & meanB_b > 0)
@@ -145,11 +153,16 @@ write.table(webstats_Sb50, "data/webstats_Sb50.txt", sep = ",")
 
 items <- c(
   "data/pdef_2.4/pdef_2.4_D01_01",
-  "data/pdef_2.4/pdef_2.4_D05_01"
+  "data/pdef_2.4/pdef_2.4_D01_02",
+  "data/pdef_2.4/pdef_2.4_D01_03",
+  "data/pdef_2.4/pdef_2.4_D05_01",
+  "data/pdef_2.4/pdef_2.4_D05_02",
+  "data/pdef_2.4/pdef_2.4_D05_03"
 )
 
 # loop: open files and append to object webstats
 webstats_D01 <- read.table(items[1], skip =1, header = T, sep = "")
+for(i in 2:3) webstats_D01 <- rbind(webstats_D01, read.table(items[i], skip =1, header = T, sep = ""))
 webstats_D01$S_c_fin <- round(webstats_D01$S_c*webstats_D01$P_c, digits = 0)  # final number of consumers, creates NaNs !!!!
 webstats_D01$S_c_fin[webstats_D01$S_c_fin == "NaN"] <- 0                     # sets NaN = 0
 webstats_D01 <- subset(webstats_D01, fintop_b == 0 & S_c_fin != 0 & meanB_b > 0)
@@ -163,7 +176,9 @@ webstats_D01$meanB_c <- webstats_D01$meanB_c*webstats_D01$S_c_fin
 
 write.table(webstats_D01, "data/webstats_D01.txt", sep = ",")
 
-webstats_D05 <- read.table(items[2], skip =1, header = T, sep = "")
+webstats_D05 <- read.table(items[4], skip =1, header = T, sep = "")
+for(i in 5:6) webstats_D05 <- rbind(webstats_D05, read.table(items[i], skip =1, header = T, sep = ""))
+
 webstats_D05$S_c_fin <- round(webstats_D05$S_c*webstats_D05$P_c, digits = 0)  # final number of consumers, creates NaNs !!!!
 webstats_D05$S_c_fin[webstats_D05$S_c_fin == "NaN"] <- 0
 webstats_D05 <- subset(webstats_D05, fintop_b == 0 & S_c_fin != 0 & meanB_b > 0)
