@@ -1,7 +1,7 @@
 Code release for the paper 'Animal diversity and ecosystem functioning in dynamic food webs'
 ===========================================================================================
 
-by Florian D. Schneider, Christian Guill, Björn C. Rall & Ulrich Brose
+by Florian D. Schneider, Ulrich Brose, Björn C. Rall & Christian Guill
 
 This repository contains simulation code and code for statistical analysis of a research project. It applies allometric models of animal foraging and network structure to simulate the ecosystem-level stocks and rates of animal and plant biomass in relation to the number of animal species present in the ecosystem. 
 
