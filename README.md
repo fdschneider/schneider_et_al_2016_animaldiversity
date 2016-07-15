@@ -8,9 +8,10 @@ This repository contains simulation code and code for statistical analysis of a 
 ## Code in this repository.
 
 1. `code/pdef_dynamics_2.4.c` & `code/pdef_dynamics_1.1.h`: Original simulation code. This was compiled and run in multiple instances for simulations over the entire gradient of 10 to 100 animal species with a single file output file for each instance found in `data/pdef_2.4/`. Additional instances were run for sensitivity analyses and are found in the same location. 
-2. `code/data.r` : Data collect and compilation. The file reads in all output files, corrects some columns, calculates additional columns and saves everything into a single output file `data/webstats.txt`. Seperate files are created for the sensititvity analyses. 
-3. `code/analysis.r` : fits the statistical models describing the relationships between animal diversity and ecosystem function and returns a summary table and the result figure 4 of the paper. 
-4. `code/supplementarymaterial.Rmd` : original code for Online Supplementary Discussion; contains code and interpretation for the full sensitivity analysis.  The document is written in [Rmarkdown](http://rmarkdown.rstudio.com) (compilation to pdf or docx requires R packages rmarkdown, knitr and pandoc; individual code chunks can be run independently in R).
+2. `code/data.r` : Data collect and compilation. The file reads in all output files, corrects some columns, calculates additional columns and saves everything into a single output file `data/webstats.txt`. Seperate files are created for the sensititvity analyses. Column names correspond do parameters as used in simulation code and slightly differ from nomenclature in the article.
+3. `code/analyse.r` : contains function `analyse()` which fits the statistical models describing the relationships between animal diversity and ecosystem function. Call using `analyse(webstats$S_c_fin, webstats$meanB_c, equation = TRUE, ylab = "")`
+4. `code/sensitivity.r` : contains function `sensitivity()` for calling the sensitivity analysis for any parameter x, as well as function `sensitivity_plus()` for visualising the simulations of the alternative model runs. 
+4. `code/analysis.r` : applies function `analyse()` to return the result figure 4 and 5 of the paper and an overview output table. applies functions in sensitivity.r to return sensitivity analysis of Supplementary Material. 
 
 ## Comments welcome
 
