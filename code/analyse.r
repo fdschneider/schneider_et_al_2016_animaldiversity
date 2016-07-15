@@ -39,6 +39,8 @@ analyse <- function(x,y,
                     xlim = round(range(x),digits = 1), #c(0,1), # (c(0.25,1))+c(-0.01, 0.01), 
                     xval = seq(min(x), max(x), length = 100), 
                     plotting = TRUE, plotmodel = TRUE, 
+                    stats = FALSE, window = 2, 
+                    rsquared = FALSE,
                     modeltype = c("log"),
                     equation = FALSE, 
                     axes = FALSE, ...) {
@@ -70,10 +72,22 @@ analyse <- function(x,y,
     
   }
   
+  if(stats) {
+    
+    med <- sapply(1:100, function(i) { median(y[x >= i-window & x <= i+window]) } )
+    lower <- sapply(1:100, function(i) { quantile(y[x >= i-window & x <= i+window], c(0.25)) } )
+    upper <- sapply(1:100, function(i) { quantile(y[x >= i-window & x <= i+window], c(0.75)) } )
+    
+    polygon(c(1:100,100:1), c(upper,rev(lower)), col = "#FFFFFF80" , border = NA )
+    lines(1:100, upper, lty = 2, col = "#000000")
+    lines(1:100, lower, lty = 2, col = "#000000")
+    lines(1:100, med, col = "#000000")
+    
+  }
   
   if(plotmodel) {
     if( "logit" %in% modeltype) {
-      model <- lm(I(log(y)) ~ I( boot::logit(x)) ) #I( boot::logit(x)) + I(boot::logit(x)^2) + I(boot::logit(x)^3)   )  # fit log-linear model
+      model <- lm(I(log(y)) ~ I( boot::logit(x)) ) 
       log_Y <- predict(model, newdata = list(x = xval), type = "response", se.fit = TRUE) # predict values for range in 'xval'
       lines(xval, exp(log_Y$fit), lwd = 2, col = "red") # add linear model
       
@@ -94,6 +108,15 @@ analyse <- function(x,y,
         ) # add model equation
         
       }
+      
+      if(rsquared) {
+        mtext(side = 1, line = -2, at = 80, 
+              substitute(
+                R ^ 2 == rs,
+                list(rs = round(summary(model)[]$r.squared, digits = 2))
+              )
+        )
+      } # plot R squared
     }
     if("gam" %in% modeltype) {
       model <- mgcv::gam(I(log(y)) ~ s(x) )
