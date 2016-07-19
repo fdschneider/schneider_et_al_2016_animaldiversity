@@ -3,6 +3,8 @@ Code release for the paper 'Animal diversity and ecosystem functioning in dynami
 
 by Florian D. Schneider, Ulrich Brose, Björn C. Rall & Christian Guill
 
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.58183.svg)](http://dx.doi.org/10.5281/zenodo.58183)
+
 This repository contains simulation code and code for statistical analysis of a research project. It applies allometric models of animal foraging and network structure to simulate the ecosystem-level stocks and rates of animal and plant biomass in relation to the number of animal species present in the ecosystem. 
 
 ## Code in this repository.
