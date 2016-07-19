@@ -1,16 +1,29 @@
 /*
-Project: Predator Diversity and Ecosystem Functioning
-------
-Population Dynamics Code
+    Code for the article 'Animal diversity and ecosystem functioning in dynamic food webs'
+     
+    Copyright (C) 2016 Christian Guill & Florian D. Schneider
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+    version 2.4.1
+    last edit: 14.07.2016 by CG
 
-version 2.4.1
-last edit: 14.07.2016 by CG
-
-authors: Christian Guill & Florian D. Schneider
 
 comments:  * program has to be invoked with a parameter to seed the RNG (two-digit number, i.e., 01)
            * updated version following the completion of the revision process; simulations were using version 2.4 at commit #74cbe2dd)
-*/
+
+ */
 
 #include "pdef_dynamics_1.1.h"
 
